@@ -31,4 +31,4 @@ The website is optimized for modern browsers that support:
 
 ## License
 
-MIT License - feel free to use this template for your personal portfolio. 
+MIT License - feel free to use this template for your portfolio. 
