@@ -1,7 +1,5 @@
-// Initialize GSAP
 gsap.registerPlugin(ScrollTrigger);
 
-// Custom cursor
 const cursor = document.querySelector('.cursor');
 const cursorDot = document.querySelector('.cursor-dot');
 
@@ -12,7 +10,6 @@ document.addEventListener('mousemove', (e) => {
     cursorDot.style.top = e.clientY + 'px';
 });
 
-// Magnetic button effect
 const magneticButtons = document.querySelectorAll('.magnetic');
 
 magneticButtons.forEach(button => {
@@ -45,7 +42,6 @@ magneticButtons.forEach(button => {
     });
 });
 
-// WebGL background
 const container = document.getElementById('webgl-container');
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -53,7 +49,6 @@ const renderer = new THREE.WebGLRenderer({ alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 container.appendChild(renderer.domElement);
 
-// Create floating elements
 const geometry = new THREE.BoxGeometry(1, 1, 1);
 const material = new THREE.MeshBasicMaterial({ 
     color: 0xffffff,
@@ -80,7 +75,6 @@ for (let i = 0; i < 20; i++) {
 
 camera.position.z = 5;
 
-// Animation loop
 function animate() {
     requestAnimationFrame(animate);
     
@@ -94,14 +88,12 @@ function animate() {
 
 animate();
 
-// Handle window resize
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-// Loading screen
 window.addEventListener('load', () => {
     const loader = document.querySelector('.loader');
     gsap.to(loader, {
@@ -113,7 +105,6 @@ window.addEventListener('load', () => {
     });
 });
 
-// Scroll animations
 gsap.utils.toArray('.section').forEach(section => {
     gsap.from(section, {
         scrollTrigger: {
@@ -127,7 +118,6 @@ gsap.utils.toArray('.section').forEach(section => {
     });
 });
 
-// Mobile navigation
 const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
 const mobileNav = document.querySelector('.mobile-nav');
 
@@ -135,3 +125,11 @@ mobileNavToggle.addEventListener('click', () => {
     mobileNavToggle.classList.toggle('active');
     mobileNav.classList.toggle('active');
 });
+
+function isIOS() {
+    return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  }
+  
+  if (isIOS()) {
+    document.body.classList.add('ios-device');
+  }
